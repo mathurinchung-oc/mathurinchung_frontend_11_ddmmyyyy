@@ -1,0 +1,3 @@
+[submodule "argent-bank"]
+	path = argent-bank
+	url = https://github.com/mathurinchung/argent-bank.git
