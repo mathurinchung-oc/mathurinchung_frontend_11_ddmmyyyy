@@ -116,7 +116,7 @@ paths:
         '500':
           description: Internal Server Error
 
-  /account:
+  /transaction:
     get:
       security:
         - Bearer: []
@@ -134,16 +134,14 @@ paths:
         - application/json
       responses:
         '200':
-          description: accounts retrieved successully
+          description: Transaction retrieved successully
           schema:
             $ref: '#/definitions/Accounts'
         '400':
           description: Invalid Fields
         '500':
           description: Internal Server Error
-
-  /transaction:
-    get:
+    post:
       security:
         - Bearer: []
       tags:
@@ -198,6 +196,35 @@ paths:
         '500':
           description: Internal Server Error
     put:
+      security:
+        - Bearer: []
+      tags:
+        - Transaction Module
+      summary: Transaction API
+      description: API for transaction
+      parameters:
+        - type: string
+          in: header
+          name: Authorization
+          description: Attach Bearer JWT token
+          required: true
+        - in: path
+          name: id
+          type: string
+          description: Attach transaction ID to URL
+          required: true
+      produces:
+        - application/json
+      responses:
+        '200':
+          description: Transaction retrieved successully
+          schema:
+            $ref: '#/definitions/Accounts'
+        '400':
+          description: Invalid Fields
+        '500':
+          description: Internal Server Error
+    delete:
       security:
         - Bearer: []
       tags:
